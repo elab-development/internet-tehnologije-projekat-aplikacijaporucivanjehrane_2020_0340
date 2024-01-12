@@ -17,4 +17,12 @@ class Proizvod extends Model
         'prilozi',
               
     ];
+
+    public function narudzbine() {
+        return $this->belongsToMany(Narudzbina::class, 'narudbina_proizvods');
+    }
+
+    public function kategorija(){         
+        return $this->belongsTo(Kategorija::class);     
+    } 
 }

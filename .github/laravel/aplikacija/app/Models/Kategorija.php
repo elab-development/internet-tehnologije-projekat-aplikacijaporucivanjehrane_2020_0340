@@ -16,4 +16,8 @@ class Kategorija extends Model
     public function restorani() {
         return $this->belongsToMany(Restoran::class, 'restoran_kategorijas');
     }
+
+    public function proizvodi(){         
+        return $this->hasMany(Proizvod::class);     
+    }
 }

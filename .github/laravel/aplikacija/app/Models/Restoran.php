@@ -20,4 +20,12 @@ class Restoran extends Model
     protected $guarded = [
         'id'
     ];
+
+    public function kategorijeJela() {
+        return $this->belongsToMany(Kategorija::class, 'restoran_kategorijas');
+    }
+
+    public function narudzbine(){         
+        return $this->hasMany(Narudzbina::class);     
+    }
 }
