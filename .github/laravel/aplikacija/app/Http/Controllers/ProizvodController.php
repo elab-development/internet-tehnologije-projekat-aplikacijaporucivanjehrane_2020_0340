@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\ProizvodResource;
 use App\Models\Proizvod;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
@@ -14,11 +15,12 @@ class ProizvodController extends Controller
     public function index()
     {
         $proizvodi = Proizvod::all();
-        
+        return ProizvodResource::collection($proizvodi);
+        /*
         if(is_null($proizvodi)){
             return response()->json('Proizvodi nisu pronadjeni', 404);
         } 
-        return  response()->json($proizvodi);
+        return  response()->json($proizvodi);*/
     }
 
     /**
@@ -55,7 +57,7 @@ class ProizvodController extends Controller
 
         ]);
 
-        return response()->json(['Proizvod je sacuvan', $proizvod]);
+        return response()->json(['Proizvod je sacuvan', new ProizvodResource($proizvod)]);
     }
 
     /**
@@ -69,8 +71,8 @@ class ProizvodController extends Controller
         if(is_null($proizvod)){
             return response()->json('Proizvod nije pronadjen.', 404);
         }
-        return response()->json($proizvod);
-        
+       // return response()->json($proizvod);
+       return new ProizvodResource($proizvod);
     }
 
     /**
@@ -109,7 +111,7 @@ class ProizvodController extends Controller
 
         $proizvod->save();
      
-        return response()->json(['Proizvod je azuriran', $proizvod]);
+        return response()->json(['Proizvod je azuriran', new ProizvodResource($proizvod)]);
     }
 
     /**
