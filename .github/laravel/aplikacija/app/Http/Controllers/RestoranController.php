@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\RestoranResource;
 use App\Models\Restoran;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
@@ -14,11 +15,12 @@ class RestoranController extends Controller
     public function index()
     {
         $restorani = Restoran::all();
-        
+        return RestoranResource::collection($restorani);
+        /*
         if(is_null($restorani)){
             return response()->json('Restorani nisu pronadjeni', 404);
         } 
-        return  response()->json($restorani);
+        return  response()->json($restorani);*/
     }
 
     /**
@@ -55,7 +57,7 @@ class RestoranController extends Controller
             'ocena' => $request->ocena,
         ]);
 
-        return response()->json(['Restoran je sacuvan']);
+        return response()->json(['Restoran je sacuvan', new RestoranResource($restoran)]);
     }
 
     /**
@@ -70,7 +72,7 @@ class RestoranController extends Controller
             return response()->json('Restoran nije pronadjen.', 404);
         }
        
-        return  response()->json($restoran);
+        return new RestoranResource($restoran);
     }
 
     /**
@@ -108,7 +110,7 @@ class RestoranController extends Controller
 
         $restoran->save();
      
-        return  response()->json($restoran);
+        return response()->json(['Restoran je azuriran', new RestoranResource($restoran)]);
     }
 
     /**
