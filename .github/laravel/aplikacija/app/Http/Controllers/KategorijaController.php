@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\KategorijaResource;
 use App\Models\Kategorija;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
@@ -14,10 +15,8 @@ class KategorijaController extends Controller
     public function index()
     {
         $kategorije = Kategorija::all();
-        if(is_null($kategorije)){
-            return response()->json('Kategorije nisu pronadjene', 404);
-        }
-        return  response()->json($kategorije);
+        return KategorijaResource::collection($kategorije);
+        
     }
 
     /**
@@ -45,7 +44,7 @@ class KategorijaController extends Controller
             'naziv' => $request->naziv_jela,
         ]);
 
-        return response()->json(['Kategorija je sacuvana', $kategorija]); 
+        return response()->json(['Kategorija je sacuvana', new KategorijaResource($kategorija)]); 
     }
 
     /**
@@ -58,8 +57,8 @@ class KategorijaController extends Controller
         if(is_null($kategorija)){
             return response()->json('Kategorija nije pronadjena.', 404);
         }
-        return response()->json($kategorija);
-        
+        //return response()->json($kategorija);
+        return new KategorijaResource($kategorija);
     }
 
     /**
@@ -89,7 +88,7 @@ class KategorijaController extends Controller
 
         $kategorija->save();
      
-        return response()->json(['Kategorija je azurirana', $kategorija]); 
+        return response()->json(['Kategorija je azurirana', new KategorijaResource($kategorija)]); 
     }
 
     /**
