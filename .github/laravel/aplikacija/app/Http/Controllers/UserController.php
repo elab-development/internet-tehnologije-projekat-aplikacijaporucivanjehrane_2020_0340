@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\UserResource;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
@@ -14,11 +15,12 @@ class UserController extends Controller
     public function index()
     {
         $users = User::all();
-        
+        return UserResource::collection($users);
+        /*
         if(is_null($users)){
             return response()->json('Korisnici nisu pronadjeni', 404);
         } 
-        return  response()->json($users);
+        return  response()->json($users);*/
     }
 
     /**
@@ -57,8 +59,9 @@ class UserController extends Controller
             'role' => $request->role,
         ]);
 
-        $user = User::create($request->all()); 
-        return response()->json($user, 201);
+        
+
+        return response()->json(['Korisnik je sacuvan', new UserResource($user)]);
     
     }
 
@@ -73,7 +76,7 @@ class UserController extends Controller
         if(is_null($user)){
             return response()->json('Korisnik nije pronadjen.', 404);
         }
-        return response()->json($user);
+        return new UserResource($user);
     }
 
     /**
@@ -113,7 +116,7 @@ class UserController extends Controller
 
         $user->save();
      
-        return response()->json(['Korisnik je azuriran']);
+        return response()->json(['Korisnik je azuriran', new UserResource($user)]);
     }
 
     /**
