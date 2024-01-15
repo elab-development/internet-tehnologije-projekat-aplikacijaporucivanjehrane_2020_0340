@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\NarudzbinaResource;
 use App\Models\Narudzbina;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
@@ -14,13 +15,13 @@ class NarudzbinaController extends Controller
     public function index()
     {
         $narudzbine = Narudzbina::all();
-        
-        
+        return NarudzbinaResource::collection($narudzbine);
+        /*
         if(is_null($narudzbine)){
             return response()->json('Narudzbine nisu pronadjene', 404);
         } 
         return  response()->json($narudzbine);
-        
+        */
     }
 
     /**
@@ -52,7 +53,7 @@ class NarudzbinaController extends Controller
             'napomena' => $request->napomena,
         ]);
 
-        return response()->json(['Narudzbina je sacuvana', $narudzbina]);
+        return response()->json(['Narudzbina je sacuvana', new NarudzbinaResource($narudzbina)]);
     }
 
     /**
@@ -67,7 +68,7 @@ class NarudzbinaController extends Controller
             return response()->json('Narudzbina nije pronadjena.', 404);
         }
 
-        return  response()->json($narudzbina);
+        return new NarudzbinaResource($narudzbina);
     }
 
     /**
@@ -102,7 +103,7 @@ class NarudzbinaController extends Controller
 
         $narudzbina->save();
      
-        return response()->json(['Narudzbina je azurirana', $narudzbina]);
+        return response()->json(['Narudzbina je azurirana', new NarudzbinaResource($narudzbina)]);
     }
 
     /**
