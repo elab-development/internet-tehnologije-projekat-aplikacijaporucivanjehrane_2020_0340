@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\RestoranKategorijaResource;
 use App\Models\RestoranKategorija;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
@@ -14,11 +15,12 @@ class RestoranKategorijaController extends Controller
     public function index()
     {
         $restorani_kategorije = RestoranKategorija::all();
-
+        return RestoranKategorijaResource::collection($restorani_kategorije);
+        /*
         if(is_null($restorani_kategorije)){
             return response()->json('Restorani nisu pronadjeni', 404);
         } 
-        return  response()->json($restorani_kategorije);
+        return  response()->json($restorani_kategorije);*/
     }
 
     /**
@@ -50,7 +52,7 @@ class RestoranKategorijaController extends Controller
             
         ]);
 
-        return response()->json(['Restoran i kategorija su sacuvani', $restoran_kategorija]);
+        return response()->json(['Restoran i kategorija su sacuvani', new RestoranKategorijaResource($restoran_kategorija)]);
     }
 
     /**
@@ -64,7 +66,7 @@ class RestoranKategorijaController extends Controller
         if(is_null($restoranKategorija)){
              return response()->json('Restoran nije pronadjen.', 404);
          }
-         return  response()->json($restoranKategorija);
+         return new RestoranKategorijaResource($restoranKategorija);
     }
 
     /**
@@ -98,7 +100,7 @@ class RestoranKategorijaController extends Controller
 
         $restoran_kategorija->save();
      
-        return response()->json(['Restoran i kategorija su azurirani',$restoran_kategorija]);
+        return response()->json(['Restoran i kategorija su azurirani', new RestoranKategorijaResource($restoran_kategorija)]);
     }
 
     /**
