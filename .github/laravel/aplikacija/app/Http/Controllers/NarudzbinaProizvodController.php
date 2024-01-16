@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\NarudzbinaProizvodResource;
 use App\Models\NarudbinaProizvod;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
@@ -14,11 +15,12 @@ class NarudzbinaProizvodController extends Controller
     public function index()
     {
         $narudzbina_proizvodi = NarudbinaProizvod::all();
-       
+        return NarudzbinaProizvodResource::collection($narudzbina_proizvodi);
+        /*
         if(is_null($narudzbina_proizvodi)){
             return response()->json('Restorani nisu pronadjeni', 404);
         } 
-        return  response()->json($narudzbina_proizvodi);
+        return  response()->json($narudzbina_proizvodi);*/
     }
 
     /**
@@ -50,7 +52,7 @@ class NarudzbinaProizvodController extends Controller
             'kolicina' => $request->kolicina,
         ]);
 
-        return response()->json(['Proizvod i narudzbina su sacuvani', $narudzbina_proizvodi]);
+        return response()->json(['Proizvod i narudzbina su sacuvani', new NarudzbinaProizvodResource($narudzbina_proizvodi)]);
     }
 
     /**
@@ -63,7 +65,7 @@ class NarudzbinaProizvodController extends Controller
         if(is_null($narudzbinaProizvod)){
             return response()->json('NarudzbinaProizvod nije pronadjen.', 404);
         }
-        return  response()->json($narudzbinaProizvod);
+        return new NarudzbinaProizvodResource($narudzbinaProizvod);
     }
 
     /**
@@ -98,7 +100,7 @@ class NarudzbinaProizvodController extends Controller
 
         $narudzbina_proizvod->save();
      
-        return response()->json(['Narudzbina i proizvod su azurirani',$narudzbina_proizvod]);
+        return response()->json(['Narudzbina i proizvod su azurirani', new NarudzbinaProizvodResource($narudzbina_proizvod)]);
     }
 
     /**
