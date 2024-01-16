@@ -18,7 +18,7 @@ class NarudzbinaResource extends JsonResource
         return [
             'id' => $this->resource->id, 
             'user' => $this->resource->user,
-            'restoran' => $this->resource->restoran,
+            'restoran' => $this->resource->restoran_id,
             'napomena' => $this->resource->napomena,
            ];
     }

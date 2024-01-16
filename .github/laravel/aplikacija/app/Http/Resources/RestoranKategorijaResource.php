@@ -17,8 +17,8 @@ class RestoranKategorijaResource extends JsonResource
         //return parent::toArray($request);
         return [
             'id' => $this->resource->id,
-            'restoran' => new RestoranResource($this->resource->restoran),
-            'kategorija' => $this->resource->kategorija,
+            'restoran' => $this->resource->kategorija_id,
+            'kategorija' => $this->resource->kategorija_id,
            ];
     }
 }
