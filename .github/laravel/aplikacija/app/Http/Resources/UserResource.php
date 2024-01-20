@@ -12,6 +12,9 @@ class UserResource extends JsonResource
      *
      * @return array<string, mixed>
      */
+
+     public static $wrap = 'korisnik';
+
     public function toArray(Request $request): array
     {
        // return parent::toArray($request);

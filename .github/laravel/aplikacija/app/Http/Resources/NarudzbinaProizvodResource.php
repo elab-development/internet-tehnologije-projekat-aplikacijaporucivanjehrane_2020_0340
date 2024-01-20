@@ -12,6 +12,9 @@ class NarudzbinaProizvodResource extends JsonResource
      *
      * @return array<string, mixed>
      */
+
+     public static $wrap = 'narudzbina-proizvod';
+
     public function toArray(Request $request): array
     {
         //return parent::toArray($request);

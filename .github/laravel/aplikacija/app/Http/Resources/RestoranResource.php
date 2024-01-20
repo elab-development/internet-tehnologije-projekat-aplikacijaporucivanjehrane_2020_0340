@@ -12,6 +12,9 @@ class RestoranResource extends JsonResource
      *
      * @return array<string, mixed>
      */
+
+     public static $wrap = 'restoran';
+
     public function toArray(Request $request): array
     {
         //return parent::toArray($request);

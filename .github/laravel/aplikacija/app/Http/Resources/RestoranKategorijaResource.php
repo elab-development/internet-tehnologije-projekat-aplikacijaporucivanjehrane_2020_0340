@@ -12,6 +12,9 @@ class RestoranKategorijaResource extends JsonResource
      *
      * @return array<string, mixed>
      */
+
+     public static $wrap = 'restoran-kategorija';
+
     public function toArray(Request $request): array
     {
         //return parent::toArray($request);

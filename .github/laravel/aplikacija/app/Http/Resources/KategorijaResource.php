@@ -12,6 +12,9 @@ class KategorijaResource extends JsonResource
      *
      * @return array<string, mixed>
      */
+    
+    public static $wrap = 'kategorija';
+
     public function toArray(Request $request): array
     {
         //return parent::toArray($request);
