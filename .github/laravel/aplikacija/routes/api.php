@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\API\AuthController;
 use App\Http\Controllers\KategorijaController;
 use App\Http\Controllers\NarudzbinaController;
 use App\Http\Controllers\ProizvodController;
@@ -38,3 +39,15 @@ Route::resource('/restorani', RestoranController::class);
 Route::resource('/narudzbine', NarudzbinaController::class);
 Route::resource('/kategorije', KategorijaController::class);
 Route::resource('/proizvodi', ProizvodController::class);
+
+Route::post('/register', [AuthController::class, 'register']);
+Route::post('/login', [AuthController::class, 'login']);
+
+Route::group(['middleware' => ['auth:sanctum']], function () {
+    Route::get('/profile', function(Request $request) {
+        return auth()->user();
+    });
+    Route::resource('proizvodi', ProizvodController::class)->only(['update','store','destroy'])->middleware('proveraRole:admin');
+
+    Route::post('/logout', [AuthController::class, 'logout']);
+});
