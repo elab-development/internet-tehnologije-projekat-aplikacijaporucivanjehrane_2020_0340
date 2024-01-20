@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\API\AuthController;
+use App\Http\Controllers\CacheController;
 use App\Http\Controllers\KategorijaController;
 use App\Http\Controllers\NarudzbinaController;
 use App\Http\Controllers\ProizvodController;
@@ -51,3 +52,5 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
 
     Route::post('/logout', [AuthController::class, 'logout']);
 });
+
+Route::get('/kes', [CacheController::class, 'index']);
