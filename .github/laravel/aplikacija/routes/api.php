@@ -4,8 +4,10 @@ use App\Http\Controllers\API\AuthController;
 use App\Http\Controllers\CacheController;
 use App\Http\Controllers\KategorijaController;
 use App\Http\Controllers\NarudzbinaController;
+use App\Http\Controllers\NarudzbinaProizvodController;
 use App\Http\Controllers\ProizvodController;
 use App\Http\Controllers\RestoranController;
+use App\Http\Controllers\RestoranKategorijaController;
 use App\Http\Controllers\UserController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -40,6 +42,9 @@ Route::resource('/restorani', RestoranController::class);
 Route::resource('/narudzbine', NarudzbinaController::class);
 Route::resource('/kategorije', KategorijaController::class);
 Route::resource('/proizvodi', ProizvodController::class);
+
+Route::resource('/rk', RestoranKategorijaController::class);
+Route::resource('/np', NarudzbinaProizvodController::class);
 
 Route::post('/register', [AuthController::class, 'register']);
 Route::post('/login', [AuthController::class, 'login']);
