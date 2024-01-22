@@ -1,38 +1,65 @@
-.App {
-  text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.app-header {
   display: flex;
-  flex-direction: column;
+  justify-content: space-between;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  padding: 10px;
+  background-color: #8a2be2; /* Ljubičasta nijansa */
+  color: #fff;
 }
 
-.App-link {
-  color: #61dafb;
+.logo-container {
+  display: flex;
+  align-items: center;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.site-name {
+  font-size: 1.5rem;
+  margin-left: 10px;
 }
+
+.search-container {
+  display: flex;
+  align-items: center;
+}
+
+.search-icon {
+  font-size: 1.2rem;
+  margin-right: 5px;
+}
+
+input {
+  padding: 5px;
+  border: none;
+  border-radius: 5px;
+}
+
+.cart-container {
+  display: flex;
+  align-items: center;
+}
+
+.cart-icon {
+  font-size: 1.2rem;
+  margin-right: 15px;
+}
+
+.sign-in-button {
+  background-color: transparent;
+  color: #fff;
+  border: 1px solid #fff;
+  border-radius: 5px;
+  padding: 5px 10px;
+  cursor: pointer;
+}
+
+.sign-in-button:hover {
+  background-color: #fff;
+  color: #8a2be2;
+}
+
+.logo-image {
+  width: 50px; /* Prilagodite veličinu prema potrebi */
+  height: auto;
+  margin-right: 10px;
+}
+
