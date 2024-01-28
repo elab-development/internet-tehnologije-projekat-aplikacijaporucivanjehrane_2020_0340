@@ -1,9 +1,15 @@
+body {
+  background-color: #a69ba9; /* Zelena boja */
+  margin: 0; /* Uklanja marginu kako bi boja pokrila celu stranicu */
+  padding: 0; /* Uklanja padding kako bi boja pokrila celu stranicu */
+}
+/* Header */
 .app-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 10px;
-  background-color: #8a2be2; /* Ljubičasta nijansa */
+  background-color: #a06ecf; /* Ljubičasta nijansa */
   color: #fff;
 }
 
@@ -62,4 +68,65 @@ input {
   height: auto;
   margin-right: 10px;
 }
+
+/* Footer */
+/* Footer Container */
+.footer {
+  background-color: #a06ecf;
+  color: white;
+  padding: 20px;
+  text-align: center;
+  overflow: hidden;
+}
+
+/* Left Section Styles */
+.left-section {
+  float: left;
+}
+
+/* Right Section Styles */
+.right-section {
+  float: right;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+  .left-section,
+  .right-section {
+    float: none;
+    margin-bottom: 10px;
+  }
+}
+
+/*RESTORANI*/
+
+.restoranContainer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 70%;
+  margin: 20px auto;
+  background-color: #f0f0f0;
+  border-radius: 10px;
+  padding: 10px;
+}
+
+.slikaContainer {
+  flex: 1;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.slika {
+  width: 400px;
+  border-radius: 10px;
+  height: 250px;
+}
+
+.infoContainer {
+  flex: 2;
+  padding: 0 20px;
+}
+
+/* Dodatni stilovi prema potrebi */
 
