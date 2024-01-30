@@ -15,6 +15,7 @@ class Restoran extends Model
         'opis',
         'ocena',
         'email',
+        'slika',
     ];
 
     protected $guarded = [
@@ -27,5 +28,9 @@ class Restoran extends Model
 
     public function narudzbine(){         
         return $this->hasMany(Narudzbina::class);     
+    }
+
+    public function proizvodi(){         
+        return $this->hasMany(Proizvod::class);     
     }
 }
