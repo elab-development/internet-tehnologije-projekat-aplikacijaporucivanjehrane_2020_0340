@@ -59,3 +59,7 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
 });
 
 Route::get('/kes', [CacheController::class, 'index']);
+
+Route::get('/spoji-podatke', [RestoranKategorijaController::class, 'spojiPodatke']);
+Route::get('/restorani-za-kategoriju/{kategorija_id}', [RestoranKategorijaController::class, 'restoraniZaKategoriju']);
+Route::get('/proizvodi-za-restoran/{restoranId}', [ProizvodController::class, 'proizvodiZaRestoran']);
