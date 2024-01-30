@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Resources\RestoranKategorijaResource;
+use App\Models\Restoran;
 use App\Models\RestoranKategorija;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
@@ -60,15 +61,40 @@ class RestoranKategorijaController extends Controller
      */
     public function show($restoranKategorija_id)
     {
-        $restoranKategorija = RestoranKategorija::find($restoranKategorija_id);//find vraca 1 podatak
+         $restoranKategorija = RestoranKategorija::find($restoranKategorija_id);//find vraca 1 podatak
        
        
-        if(is_null($restoranKategorija)){
-             return response()->json('Restoran nije pronadjen.', 404);
+         if(is_null($restoranKategorija)){
+              return response()->json('Restoran nije pronadjen.', 404);
          }
          return new RestoranKategorijaResource($restoranKategorija);
-    }
+        
+        }
 
+    public function spojiPodatke(){
+    $podaci = Restoran::join('restoran_kategorijas', 'restorans.id', '=', 'restoran_kategorijas.restoran_id')
+        ->join('kategorijas', 'kategorijas.id', '=', 'restoran_kategorijas.kategorija_id')
+        ->select('restorans.*', 'kategorijas.naziv as kategorija_naziv')
+        ->get();
+
+    // Vratite podatke kao JSON odgovor
+    return response()->json(['podaci' => $podaci]);
+}
+
+public function restoraniZaKategoriju($kategorija_id)
+{
+    try {
+        $podaci = Restoran::join('restoran_kategorijas', 'restorans.id', '=', 'restoran_kategorijas.restoran_id')
+            ->join('kategorijas', 'kategorijas.id', '=', 'restoran_kategorijas.kategorija_id')
+            ->select('restorans.*', 'kategorijas.naziv as kategorija_naziv')
+            ->where('kategorijas.id', $kategorija_id)
+            ->get();
+
+        return response()->json(['podaci' => $podaci]);
+    } catch (\Exception $e) {
+        return response()->json(['error' => 'Došlo je do greške prilikom dohvatanja podataka.'], 500);
+    }
+}
     /**
      * Show the form for editing the specified resource.
      */

@@ -15,15 +15,8 @@ class KategorijaSeeder extends Seeder
     {
         Kategorija::insert([
             ['naziv' => 'Rostilj'],
-            ['naziv' => 'Pasta'],
-            ['naziv' => 'Salate'],
-            ['naziv' => 'Dorucak'],
-            ['naziv' => 'Susi'],
-            ['naziv' => 'Dorucak'],
             ['naziv' => 'Poslastice'],
             ['naziv' => 'Pice'],
-            ['naziv' => 'Posno'],
-            ['naziv' => 'Vege'],
         ]);
     }
 }
