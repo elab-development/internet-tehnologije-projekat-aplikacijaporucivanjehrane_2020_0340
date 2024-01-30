@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Resources\ProizvodResource;
 use App\Models\Proizvod;
+use App\Models\Restoran;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 
@@ -58,6 +59,18 @@ class ProizvodController extends Controller
         ]);
 
         return response()->json(['Proizvod je sacuvan', new ProizvodResource($proizvod)]);
+    }
+
+    public function proizvodiZaRestoran($restoranId)
+    {
+         try {
+             // Dohvati sve proizvode za određeni restoran
+             $proizvodi = Proizvod::where('restoran_id', $restoranId)->get();
+
+             return response()->json(['podaci' => $proizvodi], 200);
+         } catch (\Exception $e) {
+            return response()->json(['error' => 'Greška pri dohvatanju proizvoda za restoran.'], 500);
+         }
     }
 
     /**

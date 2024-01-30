@@ -17,10 +17,13 @@ return new class extends Migration
             $table->decimal('cena', 8, 2);
             $table->text('opis');
             $table->unsignedBigInteger('kategorija_id');
+            $table->unsignedBigInteger('restoran_id');
             $table->string('prilozi');
             $table->text('sastojci')->nullable();
+            $table->text('slika')->default(null);
             // Spoljni ključ za vezu sa tabelom Kategorija
             $table->foreign('kategorija_id')->references('id')->on('kategorijas')->onDelete('cascade');
+            $table->foreign('restoran_id')->references('id')->on('restorans')->onDelete('cascade');
             $table->timestamps();
         });
     }

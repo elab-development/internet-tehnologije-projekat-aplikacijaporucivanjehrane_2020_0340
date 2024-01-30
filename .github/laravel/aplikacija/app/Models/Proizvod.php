@@ -15,7 +15,8 @@ class Proizvod extends Model
         'opis_proizvoda',
         'kategorija_id',
         'prilozi',
-              
+        'slika',
+        'restoran_id',   
     ];
 
     public function narudzbine() {
@@ -24,5 +25,9 @@ class Proizvod extends Model
 
     public function kategorija(){         
         return $this->belongsTo(Kategorija::class);     
+    } 
+
+    public function restorani(){         
+        return $this->belongsTo(Restoran::class);     
     } 
 }
