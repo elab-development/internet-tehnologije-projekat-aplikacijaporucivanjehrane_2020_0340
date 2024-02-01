@@ -1,17 +1,27 @@
 import React from 'react'
+import { FaPlus, FaMinus } from "react-icons/fa";
 
-function Proizvod() {
+function Proizvod({ proizvod, dodajProizvodUKorpu, oduzmiProizvodIzKorpe, uKorpi }) {
   return (
     <div className='restoranContainer'>
     <div className='slikaContainer'>
-      <img src={restoran.slika} alt="" className='slika'/>
+      <img src={proizvod.slika} alt="" className='slika'/>
     </div>
     <div className='infoContainer'>
-      <h2>{restoran.naziv}</h2>
-      <p>Ocena: {restoran.ocena}</p>
-      <p>Opis: {restoran.opis}</p>
-      <p>Adresa: {restoran.adresa}</p>
-      <p>E-mail: {restoran.email}</p>
+      <h2>{proizvod.naziv}</h2>
+      <p>Naziv: {proizvod.naziv_proizvoda}</p>
+      <p>Cena: {proizvod.cena}</p>
+      <p>Opis: {proizvod.opis_proizvoda}</p>
+      <p>Prilozi: {proizvod.prilozi}</p>
+
+      {uKorpi == 1 ?
+        <div>
+        {/* <button className="btn" onClick={() => dodajProizvodUKorpu(proizvod)}><FaPlus /></button> */}
+        <button className="btn" onClick={() => dodajProizvodUKorpu(proizvod)}><FaPlus /></button>
+        <button className="btn" onClick={() => oduzmiProizvodIzKorpe(proizvod)}><FaMinus /></button>
+      </div>
+      :
+      <p style={{ fontWeight: 'bold' }}>Ovaj proizvod je u korpi</p>}
     </div>
   </div>
   )
