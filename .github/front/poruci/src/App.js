@@ -1,48 +1,65 @@
-import './App.css';
-import Header from './komponente/Header';
-import Home from './komponente/Home';
-import Footer from './komponente/Footer';
-import {BrowserRouter, Routes, Route} from 'react-router-dom';
-import { useState, useEffect } from 'react';
-import axios from 'axios';
-import SviRestorani from './komponente/SviRestorani';
-import SviProizvodi from './komponente/SviProizvodi';
-import Login from './komponente/Login';
-import Register from './komponente/Register';
-
+import "./App.css";
+import Header from "./komponente/Header";
+import Home from "./komponente/Home";
+import Footer from "./komponente/Footer";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { useState, useEffect } from "react";
+import SviRestorani from "./komponente/SviRestorani";
+import SviProizvodi from "./komponente/SviProizvodi";
+import Login from "./komponente/Login";
+import Register from "./komponente/Register";
+import Korpa from "./komponente/Korpa";
+import axios from "axios";
 
 function App() {
-  const [restorani, setRestorani] = useState(null);
+  const [brojProizvodaUKorpi, setBrojProizvodaUKorpi] = useState(0);
+  const [korisnik, setKorisnik] = useState(localStorage.getItem("Korisnik") || null)
 
-  useEffect(()=>{
-    const fetchData = async () => {
-    const response = await axios.get('http://127.0.0.1:8000/api/restorani');
-    console.log(response.data.restorani);
-    setRestorani(response.data.restorani);
+  const dodajProizvodUKorpu = () => {
+    setBrojProizvodaUKorpi((prevBroj) => prevBroj + 1);
+  };
+
+  const oduzmiProizvodIzKorpe = () => {
+    if (brojProizvodaUKorpi > 0) {
+      setBrojProizvodaUKorpi((prevBroj) => prevBroj - 1);
     }
-
-   fetchData();
-  }, [])
-
-
+  };
+  const odjaviti = () =>{
+    setKorisnik(null)
+    localStorage.removeItem(korisnik)
+  }
   return (
-    <BrowserRouter className="body">
-      <Header/>
+    <BrowserRouter>
+      <Header brojProizvodaUKorpi={brojProizvodaUKorpi} korisnik = {korisnik} odjaviti = {odjaviti}/>
       <Routes>
-        <Route path='/' element = {
-          <Home/>
-        }/>
+        <Route path="/" element={<Home />} />
 
-      <Route path='/rostilj' element={<SviRestorani restorani={restorani} kategorija='rostilj' />} />
-      <Route path='/poslastice' element={<SviRestorani restorani={restorani} kategorija='poslastice' />} />
-      <Route path='/pica' element={<SviRestorani restorani={restorani} kategorija='pica' />} />
-      
-      <Route path="/proizvodi/:restoranId" element={<SviProizvodi />} />
-
-      <Route path='/login' element={<Login/>} />
-      <Route path="/register" element={<Register/>} />
+        <Route
+          path="/rostilj"
+          element={<SviRestorani kategorija="rostilj" />}
+        />
+        <Route
+          path="/poslastice"
+          element={<SviRestorani kategorija="poslastice" />}
+        />
+        <Route path="/pica" element={<SviRestorani kategorija="pica" />} />
+        <Route
+          path="/proizvodi/:restoranId"
+          element={
+            <SviProizvodi
+              brojProizvodaUKorpi
+              dodajProizvodUKorpu={dodajProizvodUKorpu}
+              oduzmiProizvodIzKorpe={oduzmiProizvodIzKorpe}
+              setBrojProizvodaUKorpi={setBrojProizvodaUKorpi}
+            />
+          }
+        />
+        {/* <Route path="/korpa" element={<Korpa proizvodi={[]} />} /> */}
+        {/* <Route path="/korpa" element={<Korpa/>} /> */}
+        <Route path="/login" element={<Login setKorisnik={setKorisnik} />} />
+        <Route path="/register" element={<Register />} />
       </Routes>
-      <Footer/>
+      <Footer />
     </BrowserRouter>
   );
 }
