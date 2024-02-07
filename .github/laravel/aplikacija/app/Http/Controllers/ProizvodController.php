@@ -42,7 +42,9 @@ class ProizvodController extends Controller
             'cena'=> 'required|numeric',
             'opis_proizvoda'=>'required',
             'kategorija_id'=> 'required',
+            'restoran_id'=> 'required',
             'prilozi'=> 'required|string|max:100',
+            'slika'=> 'required',
         ]);
 
         if($validator->fails()){
@@ -54,7 +56,9 @@ class ProizvodController extends Controller
             'cena' => $request->cena,
             'opis_proizvoda' => $request->opis_proizvoda,
             'kategorija_id' => $request->kategorija_id,
+            'restoran_id' => $request->restoran_id,
             'prilozi' => $request->prilozi,
+            'slika' => $request->slika,
 
         ]);
 
@@ -64,7 +68,6 @@ class ProizvodController extends Controller
     public function proizvodiZaRestoran($restoranId)
     {
          try {
-             // Dohvati sve proizvode za određeni restoran
              $proizvodi = Proizvod::where('restoran_id', $restoranId)->get();
 
              return response()->json(['podaci' => $proizvodi], 200);
@@ -106,7 +109,9 @@ class ProizvodController extends Controller
             'cena'=> 'required|numeric',
             'opis_proizvoda'=>'required',
             'kategorija_id'=> 'required',
+            'restoran_id'=> 'required',
             'prilozi'=> 'required|string|max:100',
+            'slika'=> 'required',
         ]);
 
         if($validator->fails()){
@@ -119,7 +124,9 @@ class ProizvodController extends Controller
         $proizvod->cena = $request->cena;
         $proizvod->opis_proizvoda = $request->opis_proizvoda;
         $proizvod->kategorija_id = $request->kategorija_id;
+        $proizvod->restoran_id = $request->restoran_id;
         $proizvod->prilozi = $request->prilozi;
+        $proizvod->slika = $request->slika;
         
 
         $proizvod->save();
