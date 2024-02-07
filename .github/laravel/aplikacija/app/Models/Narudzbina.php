@@ -12,7 +12,8 @@ class Narudzbina extends Model
     protected $fillable = [         
         'user_id',         
         'restoran_id',         
-        'napomena',            
+        'napomena',
+        'status',            
     ]; 
 
     public function user(){         

@@ -21,7 +21,8 @@ class NarudzbinaFactory extends Factory
         return [
             'user_id' => User::factory(),          
             'restoran_id' => Restoran::factory(),          
-            'napomena' => $this->faker->sentence,  
+            'napomena' => $this->faker->sentence,
+            'status' => $this->faker->randomElement(['obradjeno', 'neobradjeno', 'potvrdjeno', 'isporuceno']),  
         ];
     }
 }

@@ -15,7 +15,10 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('user_id');     
             $table->unsignedBigInteger('restoran_id');     
-            $table->text('napomena');      
+            $table->text('napomena');
+            $table->enum('status', ['obradjeno', 'neobradjeno', 'potvrdjeno', 'isporuceno'])
+            ->default('neobradjeno')
+            ->nullable(false);      
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');     
             $table->foreign('restoran_id')->references('id')->on('restorans')->onDelete('cascade');
             $table->timestamps();
