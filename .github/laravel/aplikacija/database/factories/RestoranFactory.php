@@ -22,7 +22,9 @@ class RestoranFactory extends Factory
             'opis' => $this->faker->sentence,             
             'ocena' => $this->faker->randomFloat(2, 1, 5), 
             'email' => $this->faker->unique()->safeEmail(),
-            'slika' => $this->faker->sentence, 
+            'slika' => $this->faker->sentence,
+            'geografska_duzina' => $this->faker->randomFloat(6,-180,180),
+            'geografska_sirina' => $this->faker->randomFloat(6,-180,180),
         ];
     }
 }

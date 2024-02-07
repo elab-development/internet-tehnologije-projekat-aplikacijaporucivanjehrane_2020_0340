@@ -19,6 +19,8 @@ return new class extends Migration
             $table->decimal('ocena', 4, 2)->default(0.00); //4 - ukupan broj cifara, 2 - broj decimala koji su sacuvani u koloni
             $table->string('email');
             $table->text('slika')->default(null);
+            $table->decimal('geografska_duzina',10, 6);
+            $table->decimal('geografska_sirina',10, 6);
             $table->timestamps();
         });
     }

@@ -16,6 +16,8 @@ class Restoran extends Model
         'ocena',
         'email',
         'slika',
+        'geografska_duzina',
+        'geografska_sirina',
     ];
 
     protected $guarded = [

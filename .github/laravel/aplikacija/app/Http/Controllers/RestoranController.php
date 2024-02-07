@@ -22,6 +22,33 @@ class RestoranController extends Controller
         } 
         return  response()->json($restorani);*/
     }
+    public function getRestoraniKoordinatee()
+    {
+        $restorani = Restoran::select('id', 'geografska_duzina', 'geografska_sirina', 'naziv', 'adresa', 'ocena')->get();
+
+        return response()->json($restorani);
+    }
+
+    public function getSviRestoraniKoordinate() {
+        $restorani = Restoran::select('geografska_duzina', 'geografska_sirina')->get();
+    
+        return response()->json($restorani);
+    }
+
+    public function getRestoranKoordinate($id) {
+        $restoran = Restoran::find($id);
+    
+        if (!$restoran) {
+            return response()->json(['error' => 'Restoran nije pronađen.'], 404);
+        }
+    
+        $koordinate = [
+            'geografska_duzina' => $restoran->geografska_duzina,
+            'geografska_sirina' => $restoran->geografska_sirina,
+        ];
+    
+        return response()->json($koordinate);
+    }
 
     /**
      * Show the form for creating a new resource.
@@ -42,6 +69,9 @@ class RestoranController extends Controller
             'opis'=>'required|string|max:255',
             'adresa'=> 'required|string|max:100',
             'ocena'=> 'required|string|max:5',
+            'slika' => 'required',
+            'geografska_duzina' => 'required',
+            'geografska_sirina' => 'required',
             
         ]);
 
@@ -55,6 +85,9 @@ class RestoranController extends Controller
             'opis' => $request->opisjela,
             'adresa' => $request->adresa,
             'ocena' => $request->ocena,
+            'slika' => $request->slika,
+            'geografska_duzina' => $request->geografska_duzina,
+            'geografska_sirina' => $request->geografska_sirina
         ]);
 
         return response()->json(['Restoran je sacuvan', new RestoranResource($restoran)]);
@@ -94,6 +127,9 @@ class RestoranController extends Controller
             'opis'=>'required',
             'ocena'=> 'required|decimal|max:5',
             'email'=> 'required|string|email|max:255|unique:users',
+            'slika' => 'required',
+            'geografska_duzina' => 'required',
+            'geografska_sirina' => 'required',
         ]);
 
         if($validator->fails()){
@@ -107,6 +143,9 @@ class RestoranController extends Controller
         $restoran->opis = $request->opisjela;
         $restoran->adresa = $request->adresa;
         $restoran->ocena = $request->ocena;
+        $restoran->slika = $request->slika;
+        $restoran->geografska_duzina = $request->geografska_duzina;
+        $restoran->geografska_sirina = $request->geografska_sirina;
 
         $restoran->save();
      
