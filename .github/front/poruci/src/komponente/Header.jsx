@@ -4,6 +4,7 @@ import "../App.css"; // Dodajte stil
 import { FaSearch } from "react-icons/fa";
 import { FaCartShopping } from "react-icons/fa6";
 import { Link } from "react-router-dom";
+import { TiWeatherCloudy } from "react-icons/ti";
 
 const Header = ({ brojProizvodaUKorpi, korisnik, odjaviti }) => {
   const [isSaved, setIsSaved] = useState(false);
@@ -21,7 +22,9 @@ const Header = ({ brojProizvodaUKorpi, korisnik, odjaviti }) => {
       </div>
       <div className="search-container">
         <i className="search-icon">
-          <FaSearch />
+         <Link to="/mapa">
+             <FaSearch />
+         </Link>
         </i>
         {!isSaved ? (
           <input
@@ -48,6 +51,12 @@ const Header = ({ brojProizvodaUKorpi, korisnik, odjaviti }) => {
             </button>
           </div>
         )}
+      </div>
+      <div className="cart-icon">
+      <Link to ="/vreme">
+        <TiWeatherCloudy />
+        <span>Vremenska prognoza</span>
+      </Link>
       </div>
       <div className="cart-container">
         <i className="cart-icon">

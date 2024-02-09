@@ -1,7 +1,7 @@
 import React from 'react'
 import { FaPlus, FaMinus } from "react-icons/fa";
 
-function Proizvod({ proizvod, dodajProizvodUKorpu, oduzmiProizvodIzKorpe, uKorpi }) {
+function Proizvod({ proizvod, dodajProizvodUKorpu, oduzmiProizvodIzKorpe, uKorpi, kisa }) {
   return (
     <div className='restoranContainer'>
     <div className='slikaContainer'>
@@ -10,7 +10,12 @@ function Proizvod({ proizvod, dodajProizvodUKorpu, oduzmiProizvodIzKorpe, uKorpi
     <div className='infoContainer'>
       <h2>{proizvod.naziv}</h2>
       <p>Naziv: {proizvod.naziv_proizvoda}</p>
-      <p>Cena: {proizvod.cena}</p>
+      
+      {kisa === false ?
+        <p>Cena: {proizvod.cena}</p>
+        :
+        <p>Cena: {parseFloat(proizvod.cena) + 100}</p>
+      }
       <p>Opis: {proizvod.opis_proizvoda}</p>
       <p>Prilozi: {proizvod.prilozi}</p>
 

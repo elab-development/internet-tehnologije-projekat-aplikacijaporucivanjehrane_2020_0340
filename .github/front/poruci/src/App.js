@@ -3,22 +3,26 @@ import Header from "./komponente/Header";
 import Home from "./komponente/Home";
 import Footer from "./komponente/Footer";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import SviRestorani from "./komponente/SviRestorani";
 import SviProizvodi from "./komponente/SviProizvodi";
 import Login from "./komponente/Login";
 import Register from "./komponente/Register";
-import Korpa from "./komponente/Korpa";
-import axios from "axios";
+import Mapa from "./komponente/Mapa";
+import VremenskaPrognoza from "./komponente/VremenskaPrognoza";
+import UpdateProizvodForma from "./komponente/UpdateProizvodForma";
+import ResetPassword from "./komponente/ResetPassword";
 
 function App() {
   const [brojProizvodaUKorpi, setBrojProizvodaUKorpi] = useState(0);
-  const [korisnik, setKorisnik] = useState(localStorage.getItem("Korisnik") || null)
+  const [korisnik, setKorisnik] = useState(localStorage.getItem("korisnik") || null)
+  const [access_token, setAccess] = useState(localStorage.getItem("access_token") || null)
+  const [kisa, setKisa] = useState(false)
 
   const dodajProizvodUKorpu = () => {
     setBrojProizvodaUKorpi((prevBroj) => prevBroj + 1);
   };
-
+ 
   const oduzmiProizvodIzKorpe = () => {
     if (brojProizvodaUKorpi > 0) {
       setBrojProizvodaUKorpi((prevBroj) => prevBroj - 1);
@@ -26,7 +30,8 @@ function App() {
   };
   const odjaviti = () =>{
     setKorisnik(null)
-    localStorage.removeItem(korisnik)
+    localStorage.removeItem("korisnik")
+    localStorage.removeItem("access_token")
   }
   return (
     <BrowserRouter>
@@ -51,13 +56,16 @@ function App() {
               dodajProizvodUKorpu={dodajProizvodUKorpu}
               oduzmiProizvodIzKorpe={oduzmiProizvodIzKorpe}
               setBrojProizvodaUKorpi={setBrojProizvodaUKorpi}
+              kisa={kisa}
             />
           }
         />
-        {/* <Route path="/korpa" element={<Korpa proizvodi={[]} />} /> */}
-        {/* <Route path="/korpa" element={<Korpa/>} /> */}
-        <Route path="/login" element={<Login setKorisnik={setKorisnik} />} />
+        <Route path="/login" element={<Login setKorisnik={setKorisnik} setAccess={setAccess}/>} />
+        <Route path="/reset-password" element={<ResetPassword />} />
         <Route path="/register" element={<Register />} />
+        <Route path="/mapa" element={<Mapa/>}/>
+        <Route path = "/vreme" element = {<VremenskaPrognoza setKisa = {setKisa}/>}/>
+        <Route path = "/csrf" element = {<UpdateProizvodForma access_token={access_token}/>}/>
       </Routes>
       <Footer />
     </BrowserRouter>

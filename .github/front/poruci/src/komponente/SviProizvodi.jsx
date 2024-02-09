@@ -7,7 +7,7 @@ import Korpa from "./Korpa";
 import useScrollNaVrh from "./useScrollNaVrh";
 import DugmeScrollNaVrh from "./DugmeScrollNaVrh";
 
-function SviProizvodi({ brojProizvodaUKorpi, setBrojProizvodaUKorpi }) {
+function SviProizvodi({ brojProizvodaUKorpi, setBrojProizvodaUKorpi, kisa }) {
   const [proizvodi, setProizvodi] = useState([]);
   const [korpa, setKorpa] = useState([]);
   const { restoranId } = useParams();
@@ -53,6 +53,7 @@ function SviProizvodi({ brojProizvodaUKorpi, setBrojProizvodaUKorpi }) {
           dodajProizvodUKorpu={dodajProizvodUKorpu}
           oduzmiProizvodIzKorpe={oduzmiProizvodIzKorpe}
           uKorpi = {1}
+          kisa = {kisa}
         />
       ))}
       <DugmeScrollNaVrh />
