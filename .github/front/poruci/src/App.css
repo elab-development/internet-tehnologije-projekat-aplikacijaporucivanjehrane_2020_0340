@@ -174,9 +174,13 @@ input {
 }
 
 .container {
-  background-color: #ffffff; /* Dodajte boju prema potrebi */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #a69ba9; /* Dodajte boju prema potrebi */
   width: 600px;
   height: 600px;
+  line-height: 3.5
 }
 
 .card {
@@ -236,12 +240,12 @@ input {
 
 .pagination a:hover {
   background-color: #a995d7;
-  color: #fff;
+  color: #af3eac;
 }
 
 .pagination .active {
   background-color: #696b6d;
-  color: #fff;
+  color: #4c1f86;
 }
 
 .pagination-btn {
@@ -268,14 +272,59 @@ input {
   border: none;
   border-radius: 50%;
   padding: 10px;
-  font-size: 24px; /* Podešavanje veličine ikone */
+  font-size: 24px; 
   display: flex;
   align-items: center;
   justify-content: center;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Dodavanje senke */
-  transition: background-color 0.3s ease; /* Animacija boje pozadine */
+  transition: background-color 0.3s ease; 
 }
 
 .dugme-scroll-na-vrh:hover {
-  background-color: #a040a0; /* Ljubičasta boja na hover */
+  background-color: #a040a0;
+}
+
+/*MAPA*/
+.MapaContainer {
+  height: 500px;
+  width: 100%;
+}
+
+/* Stil za responsivnost na manjim ekranima */
+@media (max-width: 768px) {
+  .MapaContainer {
+    height: 300px;
+  }
+} 
+
+/*VREME*/
+.weather-container {
+  text-align: center;
+}
+
+.weather-details {
+  margin-top: 20px; 
+}
+.icon {
+  font-size: 4rem;
+  color: rgb(81, 23, 87);
+}
+/* Stil za resetovanje lozinke */
+.reset-password-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.reset-password-container h2 {
+  margin-bottom: 20px;
+}
+
+.reset-password-container input {
+  width: 100%;
+  max-width: 300px;
+  padding: 10px;
+  margin-bottom: 15px;
+  box-sizing: border-box;
 }

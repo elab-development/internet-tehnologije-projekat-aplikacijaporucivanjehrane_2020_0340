@@ -6,6 +6,7 @@ use App\Http\Controllers\KategorijaController;
 use App\Http\Controllers\NarudzbinaController;
 use App\Http\Controllers\NarudzbinaProizvodController;
 use App\Http\Controllers\ProizvodController;
+use App\Http\Controllers\ResetPasswordController;
 use App\Http\Controllers\RestoranController;
 use App\Http\Controllers\RestoranKategorijaController;
 use App\Http\Controllers\UserController;
@@ -91,3 +92,4 @@ Route::get('/proizvodi-za-restoran/{restoranId}', [ProizvodController::class, 'p
 Route::get('/restoran/{id}/koordinate', [RestoranController::class, 'getRestoranKoordinate']);
 Route::get('/svi-restorani/koordinate', [RestoranController::class, 'getSviRestoraniKoordinate']);
 Route::get('/restorani-koordinate', [RestoranController::class, 'getRestoraniKoordinatee']);
+Route::post('/reset-password', [ResetPasswordController::class, 'resetPassword']);
