@@ -1,0 +1,330 @@
+body {
+  background-color: #a69ba9; /* Zelena boja */
+  margin: 0; /* Uklanja marginu kako bi boja pokrila celu stranicu */
+  padding: 0; /* Uklanja padding kako bi boja pokrila celu stranicu */
+}
+/* Header */
+.app-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  background-color: #a06ecf; /* Ljubičasta nijansa */
+  color: #fff;
+}
+
+.logo-container {
+  display: flex;
+  align-items: center;
+}
+
+.site-name {
+  font-size: 1.5rem;
+  margin-left: 10px;
+}
+
+.search-container {
+  display: flex;
+  align-items: center;
+}
+
+.search-icon {
+  font-size: 1.2rem;
+  margin-right: 5px;
+}
+
+input {
+  padding: 5px;
+  border: none;
+  border-radius: 5px;
+}
+
+.cart-container {
+  display: flex;
+  align-items: center;
+}
+
+.cart-icon {
+  font-size: 1.2rem;
+  margin-right: 15px;
+}
+
+.sign-in-button {
+  background-color: transparent;
+  color: #fff;
+  border: 1px solid #fff;
+  border-radius: 5px;
+  padding: 5px 10px;
+  cursor: pointer;
+}
+
+.sign-in-button:hover {
+  background-color: #fff;
+  color: #8a2be2;
+}
+
+.logo-image {
+  width: 50px; /* Prilagodite veličinu prema potrebi */
+  height: auto;
+  margin-right: 10px;
+}
+.cart-badge {
+  position: absolute;
+  top: 0;
+  right: 0;
+  background-color: rgb(114, 186, 218);
+  color: white;
+  border-radius: 50%;
+  padding: 0.2em 0.5em;
+}
+
+/* Footer */
+/* Footer Container */
+.footer {
+  background-color: #a06ecf;
+  color: white;
+  padding: 20px;
+  text-align: center;
+  overflow: hidden;
+}
+
+/* Left Section Styles */
+.left-section {
+  float: left;
+}
+
+/* Right Section Styles */
+.right-section {
+  float: right;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+  .left-section,
+  .right-section {
+    float: none;
+    margin-bottom: 10px;
+  }
+}
+
+/*RESTORANI*/
+
+.restoranContainer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 70%;
+  margin: 20px auto;
+  background-color: #f0f0f0;
+  border-radius: 10px;
+  padding: 10px;
+}
+
+.slikaContainer {
+  flex: 1;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.slika {
+  width: 400px;
+  border-radius: 10px;
+  height: 250px;
+}
+
+.infoContainer {
+  flex: 2;
+  padding: 0 20px;
+}
+/*DUGMICI ZA PROIZVODE*/
+.dugmiciContainer {
+  display: flex;
+}
+
+.btn {
+  margin-right: 10px;
+  padding: 5px 10px;
+  background-color: #621976;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.btn:hover {
+  background-color: #8d3ac9;
+}
+/* LOGIN */
+/* Add your custom styles here */
+.body-login{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  margin: 0;
+}
+.vh-100 {
+  min-height: 100vh;
+}
+
+.gradient-custom {
+  background-color: #a69ba9; /* Zelena boja */
+  margin: 0; /* Uklanja marginu kako bi boja pokrila celu stranicu */
+  padding: 0; /* Uklanja padding kako bi boja pokrila celu stranicu */
+}
+
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #a69ba9; /* Dodajte boju prema potrebi */
+  width: 600px;
+  height: 600px;
+  line-height: 3.5
+}
+
+.card {
+  border-radius: 1rem;
+}
+
+.form-outline {
+  margin-bottom: 1.5rem;
+}
+
+.form-label {
+  color: #060606; /* Dodajte boju prema potrebi */
+}
+
+.form-control {
+  background-color: #e6ddea; /* Dodajte boju prema potrebi */
+  color: #d76ae3; /* Dodajte boju prema potrebi */
+}
+
+.btn-outline-light {
+  background-color: transparent;
+  color: #452248;
+  border: 1px solid #b833d6;
+  border-radius: 5px;
+  padding: 5px 10px;
+  cursor: pointer;
+}
+
+.btn-outline-light:hover {
+  background-color: #fff;
+  color: #8a2be2;
+}
+/*PAGINACIJA*/
+.pagination {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  list-style: none;
+  padding: 10px;
+  background-color: #f0f0f0;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px #1ba0da1a;
+}
+
+.pagination li {
+  margin: 0 5px;
+}
+
+.pagination a {
+  text-decoration: none;
+  color: #5d317e;
+  padding: 8px 12px;
+  border: 1px solid #733a8e;
+  border-radius: 5px;
+  transition: background-color 0.3s;
+}
+
+.pagination a:hover {
+  background-color: #a995d7;
+  color: #af3eac;
+}
+
+.pagination .active {
+  background-color: #696b6d;
+  color: #4c1f86;
+}
+
+.pagination-btn {
+  background-color: #702e7d;
+  color: #fff;
+  padding: 8px 15px;
+  border: 1px solid #863f90;
+  border-radius: 5px;
+  box-shadow: 2px 0px 5px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+}
+
+.pagination-btn:hover {
+  background-color: #c680db;
+}
+/*DUGME SCROLLLNAVRH*/
+.dugme-scroll-na-vrh {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  cursor: pointer;
+  background-color: #621976; /* Ljubičasta boja */
+  color: #fff; /* Bela boja teksta */
+  border: none;
+  border-radius: 50%;
+  padding: 10px;
+  font-size: 24px; 
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Dodavanje senke */
+  transition: background-color 0.3s ease; 
+}
+
+.dugme-scroll-na-vrh:hover {
+  background-color: #a040a0;
+}
+
+/*MAPA*/
+.MapaContainer {
+  height: 500px;
+  width: 100%;
+}
+
+/* Stil za responsivnost na manjim ekranima */
+@media (max-width: 768px) {
+  .MapaContainer {
+    height: 300px;
+  }
+} 
+
+/*VREME*/
+.weather-container {
+  text-align: center;
+}
+
+.weather-details {
+  margin-top: 20px; 
+}
+.icon {
+  font-size: 4rem;
+  color: rgb(81, 23, 87);
+}
+/* Stil za resetovanje lozinke */
+.reset-password-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.reset-password-container h2 {
+  margin-bottom: 20px;
+}
+
+.reset-password-container input {
+  width: 100%;
+  max-width: 300px;
+  padding: 10px;
+  margin-bottom: 15px;
+  box-sizing: border-box;
+}
