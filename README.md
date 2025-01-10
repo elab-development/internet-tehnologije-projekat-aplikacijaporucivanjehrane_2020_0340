@@ -1,7 +1,4 @@
-# Naziv Projekta
- Veb aplikacija za poručivanje hrane
- 
-## Opis Projekta
+#  Veb aplikacija za poručivanje hrane
 
 Aplikacija se razvija sa ciljem da omoguci korisniku da poruči hranu iz najbližih restorana.
  
